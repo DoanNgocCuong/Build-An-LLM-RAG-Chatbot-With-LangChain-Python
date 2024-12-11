@@ -17,11 +17,24 @@
 
 ### Bước 1: Cài đặt môi trường
 
+Version cũ: 
 - Khuyến nghị dùng python version 3.8.18.
 - Nên dùng conda, setup environment qua câu lệnh: conda create -n myenv python=3.8.18
 - Sau đó active enviroment qua câu lệnh: conda activate myenv
 - Mở Terminal/Command Prompt và chạy lệnh sau:
   - pip install -r requirements.txt
+
+-------------
+Version mới: 
+- Mình hay xài .venv để setup environment.
+- Cách setup:
+```bash
+  - python -m venv .venv
+  - source .venv/bin/activate
+  - cd src
+  - pip install poetry
+  - poetry install
+```
 
 ### Bước 2: Tải xuống Ollama
 
@@ -35,10 +48,15 @@
 1. Khởi động Docker Desktop
 2. Mở Terminal/Command Prompt, chạy lệnh:
    docker compose up --build
+  - milvus-etcd: For metadata storag  
+  - milvus-minio: For object storage
+  - milvus-standalone: The main Milvus database server
 
 Option: Cài đặt attu để view data đã seed vào Milvus:
 
 1. Chạy lệnh: docker run -p 8000:3000 -e MILVUS_URL={milvus server IP}:19530 zilliz/attu:v2.4
+- This command runs Attu - a web UI tool to manage your Milvus database. 
+- Milvus database will be running on port 19530
 2. 2 Thay "milvus server IP" bằng IP internet local, cách lấy IP local:
    - Chạy lệnh: ipconfig hoặc tương tự với các hệ điều hành khác
 
